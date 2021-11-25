@@ -123,6 +123,7 @@ p[class^="from-"].emoji::before {
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
   block-size: fit-content;
+  overflow-y: auto;
 }
 
 .sent-message{
