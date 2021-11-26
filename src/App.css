@@ -122,15 +122,14 @@ p[class^="from-"].emoji::before {
   height: 450px;
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
-  block-size: fit-content;
   overflow-y: auto;
 }
 
 .sent-message{
   
-  position: relative;
+  position: absolute;
   left: 50%;
-  bottom: -160px;
+  bottom: 370 px;
   transform: translate(-50%, -50%);
   margin: 0 auto;
 
@@ -138,4 +137,13 @@ p[class^="from-"].emoji::before {
 
 
 
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0
 }
