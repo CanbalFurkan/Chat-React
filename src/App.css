@@ -7,14 +7,6 @@ background-color: rgb(17, 28, 68);
 
 
 
-.center-block-mes {
-  display: table;  /* Instead of display:block */
-  margin-left: auto;
-  margin-right: auto;
-
-  
-
-}
 
 
 .profile-image {
@@ -155,15 +147,17 @@ p[class^="from-"].emoji::before {
 
 .form-control{
 
-width: 350px;
-height: 20px;
+width: 550px;
+height: 40px;
 border-radius: 60px;
+
 
 }
 .input-group{
 
-  width: 450px;
-  height: 20px;
+  width: 700px;
+  height: 30px;
+ 
 
 
 
@@ -175,4 +169,16 @@ border-radius: 60px;
   right: 32%;
   transform: translate(0, -50%);
   padding: 10px;
-  }
+}
+
+.mx-auto{
+  display: inline-block;
+  vertical-align: middle;
+
+}
+.btn-default{
+width: 60px;
+height: 50px;
+border-radius: 13px;
+
+}
