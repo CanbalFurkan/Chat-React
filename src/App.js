@@ -2,9 +2,11 @@
 import './App.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 
@@ -18,18 +20,17 @@ firebase.initializeApp({
   measurementId: "G-DRBSGBZQLF"
 
 })
-
-
+const auth = firebase.auth();
 const firestore=firebase.firestore();
 
 function App() {
 
-
+  const [user] = useAuthState(auth);
 
   return (
     <div class="center" >
       <section >
-        <Chatroom/>
+      {user ? < Chatroom /> : <SignIn />}
       </section>
       </div>
         
@@ -39,11 +40,35 @@ function App() {
   );
 }
 
+function SignIn() {
+
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+
+  return (
+    <>
+      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+      <p color="white">Google ile gir</p>
+    </>
+  )
+
+}
+
+function SignOut() {
+  return auth.currentUser && (
+    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+  )
+}
+
+
 
 
 function Chatroom(){
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
+  const { uid, photoURL } = auth.currentUser;
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
@@ -52,6 +77,8 @@ function Chatroom(){
     await messagesRef.add({
       text:message_text,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL
 
     })
 
@@ -82,10 +109,14 @@ return (
 }
 
 function ChatMessage(props){
-const{text,createdAt,uid}=props.message;
+const{text,createdAt,uid,photoURL}=props.message;
+const messageClass = uid === auth.currentUser.uid ? 'me' : 'them';
+
+console.log(messageClass)
 return (
-<div class="imessage">
-<p class="from-them">{text}</p>
+  <div class="imessage">
+<img class={`from-${messageClass}`}src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+<p className={`from-${messageClass}`}>{text}</p>
 
 
 </div>
