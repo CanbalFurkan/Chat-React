@@ -147,3 +147,20 @@ p[class^="from-"].emoji::before {
   clear: both;
   height: 0
 }
+.input-group {
+  top: 675px;
+  left:800px;
+  right: 0;
+  
+  
+
+  position: absolute;
+}
+
+.form-control{
+
+width: 350px;
+height: 20px;
+border-radius: 60px;
+
+}
