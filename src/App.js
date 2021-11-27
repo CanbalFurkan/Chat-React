@@ -27,8 +27,8 @@ function App() {
 
 
   return (
-    <div>
-      <section>
+    <div class="center" >
+      <section >
         <Chatroom/>
       </section>
       </div>
@@ -61,12 +61,15 @@ function Chatroom(){
 
 return (
 <>
+<div>
 <div className="container">
 <div>
   {messages &&messages.map(msg=> <ChatMessage key={msg.id} message={msg}/>)}
 
 </div>
-<div class="input-group">
+
+</div>
+<div class="input-group center-block-mes">
   <input value={message_text} onChange={(e)=>set_message(e.target.value)} class="form-control"/>
   <button class="btn btn-outline-secondary" type="button" onClick={sendMessage}>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
@@ -85,7 +88,7 @@ function ChatMessage(props){
 const{text,createdAt,uid}=props.message;
 return (
 <div class="imessage">
-<p class="from-me">{text}</p>
+<p class="from-them">{text}</p>
 
 
 </div>

@@ -5,6 +5,18 @@ background-color: rgb(17, 28, 68);
 
 }
 
+
+
+.center-block-mes {
+  display: table;  /* Instead of display:block */
+  margin-left: auto;
+  margin-right: auto;
+
+  
+
+}
+
+
 .profile-image {
   width: 50px;
   height: 50px;
@@ -116,28 +128,19 @@ p[class^="from-"].emoji::before {
   content: none;
 }
 .container {
+  margin-left: auto;
+  margin-right: auto;
   
-  margin: 12% auto;
+ 
   width: 620px;
-  height: 450px;
+  height: 600px;
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
   overflow-y: auto;
-}
-
-.sent-message{
-  
-  position: absolute;
-  left: 50%;
-  bottom: 370 px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-
-  
-
-
 
 }
+
+
 
 .clearfix:after {
   visibility: hidden;
@@ -147,15 +150,8 @@ p[class^="from-"].emoji::before {
   clear: both;
   height: 0
 }
-.input-group {
-  top: 675px;
-  left:800px;
-  right: 0;
-  
-  
 
-  position: absolute;
-}
+
 
 .form-control{
 
@@ -164,3 +160,19 @@ height: 20px;
 border-radius: 60px;
 
 }
+.input-group{
+
+  width: 450px;
+  height: 20px;
+
+
+
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  right: 32%;
+  transform: translate(0, -50%);
+  padding: 10px;
+  }
