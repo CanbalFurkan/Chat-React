@@ -3,7 +3,7 @@ import './App.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-
+import Picker from 'emoji-picker-react';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -86,6 +86,12 @@ function Chatroom(){
 
   }
 
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+  };
+
 return (
 <>
 <div>
@@ -100,6 +106,12 @@ return (
   <input value={message_text} onChange={(e)=>set_message(e.target.value)} class="form-control"/>
   <button class="btn btn-default" type="button" onClick={sendMessage} >SEND</button>
 
+  {chosenEmoji ? (
+        <span>You chose: {chosenEmoji.emoji}</span>
+      ) : (
+        <span>No emoji Chosen</span>
+      )}
+      <Picker onEmojiClick={onEmojiClick} />
   </div>
 </div>
 </>
